@@ -9,14 +9,16 @@ const routes = [{
   component: () => import('@/views/login/MyIndex.vue')
 },
 {
-  path: '/',
+  // redirect: '/home',
   // 名为Route 'layout'的路由有一个默认的子路由。当导航到这个命名路由(:to="{name: 'layout'}")时，默认的子路由将不会被渲染。从该路由中删除该名称，并为命名链接使用默认子路由的名称。
   // 父级路由不能定义name属性，SO解决办法是：即去除父级的name属性即可。
   // name: 'layout', // 如果父路由有默认子路由，那它的 name 没有意义
+  path: '/',
+  redirect: '/home',
   component: () => import('@/views/layout/MyIndex.vue'),
   children: [
     {
-      path: '', // 默认子路由，只能有一个
+      path: '/home', // 默认子路由，只能有一个
       name: 'home',
       component: () => import('@/views/home/MyIndex.vue')
     },
@@ -40,6 +42,7 @@ const routes = [{
 
 const router = new VueRouter({
   routes
+  // linkExactActiveClass: 'open active'
 })
 
 export default router

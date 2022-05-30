@@ -1,5 +1,9 @@
 <template>
-  <div class="home-container">首页</div>
+  <div class="home-container">
+    <van-nav-bar class="page-nav-bar">
+
+    </van-nav-bar>
+  </div>
 </template>
 
 <script>

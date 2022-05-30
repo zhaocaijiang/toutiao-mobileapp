@@ -1,7 +1,10 @@
 <template>
   <div  class="login-container">
     <!-- 导航栏 -->
-    <van-nav-bar class="page-nav-bar" title="登录" />
+    <van-nav-bar class="page-nav-bar"
+    title="登录"
+    left-arrow
+     @click-left="$router.back()"/>
     <!-- 登录表单 -->
     <van-form ref="loginForm" @submit="onSubmit">
         <van-field
@@ -103,6 +106,8 @@ export default {
         // 登录成功后保存token
         this.$store.commit('setUser', data)
         this.$toast.success('登录成功!') // 后一个提示会覆盖前一个提示
+        // 暂时这样，后面优化
+        this.$router.back()
       } catch (err) {
         if (err.response.status === 400) {
           console.log('登录成功', err)
@@ -165,6 +170,7 @@ export default {
     background-color: #6db4fb;
     border: none;
   }
+
 }
 
 </style>
